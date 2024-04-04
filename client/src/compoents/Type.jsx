@@ -1,12 +1,14 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Products from "./Products";
 import Option from "./Option";
 import ErrorBanner from "./ErrorBanner";
+import { OrderConext } from "../context/OrderContext";
 
 const Type = ({orderType}) => {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(false);
+  const [orderData, updateItemCount] = useContext(OrderConext);
 
   useEffect(()=>{
     loadItems(orderType);
